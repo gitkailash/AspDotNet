@@ -1,0 +1,37 @@
+﻿@model List <StudentCRUDOperation.Context.Student>
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2>StudentList</h2>
+<table class="table table-striped">
+    <thead class="bg-info">
+        <tr>
+            <th>Name</th>
+        
+            <th>Mobile</th>
+        
+            <th>Email</th>
+        
+            <th>Address</th>
+
+            <th>Action</th>
+        </tr>
+
+    </thead>
+    @foreach(var item in Model)
+    {
+    <tbody>
+        <tr>
+            <td>@item.FirstName @item.LastName</td>
+            <td>@item.Mobile</td>
+            <td>@item.Email</td>
+            <td>@item.Address</td>
+            <td>
+                <a href="@Url.Action("Student", new {@item.ID, @item.FirstName, @item.LastName, @item.Mobile, @item.Email, @item.Address})" class="btn btn-success">Edit</a>
+                <a href="@Url.Action("DeleteStudent", new {@item.ID})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+    }
+</table>
